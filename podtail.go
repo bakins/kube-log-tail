@@ -65,8 +65,8 @@ func (p *podTail) tailContainer(name string) error {
 	// see https://stackoverflow.com/a/32984298
 	// and https://kubernetes.io/docs/api-reference/v1.6/#-strong-misc-operations-strong--71
 
+	// TODO: add retry logic on timeout on long poll.
 	label := fmt.Sprintf("%s/%s/%s", p.namespace, p.name, name)
-
 	printer := p.colorFuncGet()
 
 	// TODO: allow time since and number of lines options?

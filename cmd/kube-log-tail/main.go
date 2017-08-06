@@ -71,6 +71,10 @@ func runTail(cmd *cobra.Command, args []string) {
 	go func() {
 		<-sigs
 		k.Stop()
+		// hack for when it hangs in get pods.
+		// TODO: can we pass the context to it?
+		time.Sleep(time.Second * 5)
+		os.Exit(0)
 	}()
 
 	if err := k.Run(); err != nil {

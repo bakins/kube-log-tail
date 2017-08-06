@@ -153,17 +153,19 @@ func (k *KubeLogTail) processPods() error {
 	}
 
 	foundPods := make(map[string]*v1.Pod)
-	for _, p := range pods.Items {
+	for i := range pods.Items {
+		p := &pods.Items[i]
 		key := fmt.Sprintf("%s/%s", p.GetNamespace(), p.GetName())
-		foundPods[key] = &p
+		foundPods[key] = p
 	}
 
 	// start new pods
-	for key, pod := range foundPods {
+	for key := range foundPods {
 		_, ok := k.pods[key]
 		if ok {
 			continue
 		}
+		pod := foundPods[key]
 		t := k.newPodTail(pod)
 		k.pods[key] = t
 
