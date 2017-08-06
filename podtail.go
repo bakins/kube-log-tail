@@ -81,7 +81,7 @@ func (p *podTail) tailContainer(name string) error {
 
 	readCloser, err := req.Stream()
 	if err != nil {
-		return errors.Wrapf(err, "unable to stream logs for %s", label)
+		panic(errors.Wrapf(err, "unable to stream logs for %s", label))
 	}
 
 	defer func() { _ = readCloser.Close() }()
@@ -89,6 +89,7 @@ func (p *podTail) tailContainer(name string) error {
 	scanner := bufio.NewScanner(readCloser)
 	for scanner.Scan() {
 		printer(label, scanner.Text())
+
 	}
 	if err := scanner.Err(); err != nil {
 		return errors.Wrapf(err, "error scanning for lines for %s", label)

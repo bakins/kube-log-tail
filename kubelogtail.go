@@ -148,14 +148,15 @@ func (k *KubeLogTail) processPods() error {
 	}
 
 	oldPods := make(map[string]bool)
-	for key, _ := range k.pods {
+	for key := range k.pods {
 		oldPods[key] = true
 	}
 
 	foundPods := make(map[string]*v1.Pod)
-	for _, p := range pods.Items {
+	for i := range pods.Items {
+		p := &pods.Items[i]
 		key := fmt.Sprintf("%s/%s", p.GetNamespace(), p.GetName())
-		foundPods[key] = &p
+		foundPods[key] = p
 	}
 
 	// start new pods
@@ -177,7 +178,7 @@ func (k *KubeLogTail) processPods() error {
 	}
 
 	// stop old ones
-	for key, _ := range oldPods {
+	for key := range oldPods {
 		_, ok := foundPods[key]
 		if ok {
 			continue

@@ -15,7 +15,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const cmdVersion = "0.1.0"
+const cmdVersion = "0.1.1"
 
 var (
 	version       bool
