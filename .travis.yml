@@ -6,5 +6,5 @@ notifications:
 install:
 - true
 script:
-- "go build ./cmd/kube-log-tail"
+- "./script/build"
 

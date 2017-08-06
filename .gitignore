@@ -1,1 +1,2 @@
-kube-log-tail
+kube-log-tail.darwin.amd64
+kube-log-tail.linux.amd64
