@@ -64,6 +64,7 @@ Please open a PR or an Issue.
 - [Homebrew](https://brew.sh/) recipe
 - use watches for pod events rather than a full refresh
 - allow disabling seeing old log lines
+- Handle containers that sre not running - ie, in ContainerStart
 
 ## LICENSE
 
