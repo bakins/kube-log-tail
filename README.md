@@ -55,9 +55,9 @@ By using the `-k` argument you can specifiy how `kube-log-tail` makes use of col
 Only a small number of colors are currently supported, and each container in each pod
 is given a color, so colors may repeat.
 
-## Bugs, Features, etc
+## Know Issues
 
-Please open a PR or an Issue.
+- Sometimes, `kube-log-tail` will just stop tailing a log. If this happens, check if the last log line from the container was `unexpected stream type ""` or similar. This is an [issue](https://github.com/kubernetes/kubernetes/issues/47800) with Kubernetes and I'm thinking of workaround.
 
 ## TODO
 
