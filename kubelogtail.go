@@ -9,6 +9,10 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/pkg/api/v1"
+
+	// import for auth providers
+	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
+	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
 )
 
 // OptionsFunc is a function passed to new for setting options on a new KubeLogTail.
