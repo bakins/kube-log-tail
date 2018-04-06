@@ -83,5 +83,9 @@ func defaultKubeconfig() string {
 	if err != nil {
 		log.Fatalf("unable to determine home directory: %s", err)
 	}
-	return filepath.Join(dir, ".kube", "config")
+	if os.Getenv("KUBECONFIG") != "" {
+		return os.Getenv("KUBECONFIG")
+	} else {
+		return filepath.Join(dir, ".kube", "config")
+	}
 }
