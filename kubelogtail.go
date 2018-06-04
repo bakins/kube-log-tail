@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
+	"k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/pkg/api/v1"
 
 	// import for auth providers
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
